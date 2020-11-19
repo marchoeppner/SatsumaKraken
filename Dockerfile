@@ -9,7 +9,7 @@ LABEL authors="Marc Hoeppner" \
     RUN apt-get -y install wget make build-essential sed cmake git
 
     RUN cd /opt \
-	&& git https://github.com/bioinfologics/satsuma2.git satsuma2 \
+	&& git clone https://github.com/bioinfologics/satsuma2.git satsuma2 \
 	&& cd satsuma2 \
 	&& cmake CMakeLists.txt \
 	&& make

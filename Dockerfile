@@ -9,13 +9,13 @@ LABEL authors="Marc Hoeppner" \
     RUN apt-get -y install wget make build-essential sed cmake git
 
     RUN cd /opt \
-	&& git clone git@github.com:bioinfologics/satsuma2.git satsuma2 \
+	&& git https://github.com/bioinfologics/satsuma2.git satsuma2 \
 	&& cd satsuma2 \
 	&& cmake CMakeLists.txt \
 	&& make
 
     RUN cd /opt \
-	&& git clone git@github.com:GrabherrGroup/kraken.git kraken \
+	&& git clone https://github.com/GrabherrGroup/kraken.git  kraken \
 	&& cd kraken \
 	&& ./configure \
 	&& make -C build 

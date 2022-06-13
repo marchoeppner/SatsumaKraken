@@ -1,9 +1,9 @@
 FROM ubuntu:18.04
 LABEL authors="Marc Hoeppner" \
-      description="Docker image containing Satsuma2 and KrakenTranslate"
+      description="Docker image containing Satsuma, Satsuma2 and KrakenTranslate"
 
     ENV SATSUMA2_PATH /opt/satsuma2/bin
-    ENV PATH=/opt/satsuma2/bin:/opt/kraken/bin:$PATH
+    ENV PATH=/opt/satsuma:/opt/satsuma2/bin:/opt/kraken/bin:$PATH
 
     RUN apt-get -y update
     RUN apt-get -y install wget make build-essential sed cmake git
@@ -19,4 +19,9 @@ LABEL authors="Marc Hoeppner" \
 	&& cd kraken \
 	&& ./configure \
 	&& make -C build 
+
+    RUN cd /opt \
+	&& git clone https://git.code.sf.net/p/satsuma/code satsuma \
+	&& cd satsuma \
+	&& make -j 2
 
